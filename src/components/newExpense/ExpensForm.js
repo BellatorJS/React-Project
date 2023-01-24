@@ -11,15 +11,15 @@ const ExpensForm = (props) => {
         event.preventDefault()
 
         const expenseData = {
-            title:enteredTitle,
-            amount: enteredAmount,
-            date: new Date(enteredDate)  
-        }
+            title: enteredTitle,
+            amount: +enteredAmount,
+            date: new Date(enteredDate),
+          };
         props.onSaveExpenxeData(expenseData)
         setEnteredTitle("");
         setEnteredAmount("");
         setEnteredDate("");
-        props.onhandleClick()
+  
 
 
     }
@@ -41,8 +41,7 @@ const ExpensForm = (props) => {
                 <label>Title</label>
                 <input type='text' value={enteredTitle} onChange={titleChangehundler}/>
             </div>
-        </div>
-        <div className='new-expense__controls'>
+       
             <div className='new-expense__control'>
                 <label>Amount</label>
                 <input 
@@ -50,8 +49,7 @@ const ExpensForm = (props) => {
                 value={enteredAmount}
                  min='0.01' step='0.01' onChange={amountChangehundler} />
             </div>
-        </div>
-        <div className='new-expense__controls'>
+
             <div className='new-expense__control'>
                 <label>Date</label>
                 <input type='date'
@@ -60,7 +58,6 @@ const ExpensForm = (props) => {
                 max='2024-01-01' onChange={dateChangehundler}/>
             </div>
         </div>
-
         <div className='new-expense__actions'>
             <button type='button' onClick ={props.onCancel}>Cancel</button>
             <button type='sumbit'>Add Expense</button>
